@@ -1,0 +1,28 @@
+.form-container {
+    margin: 0 auto;
+    width: 60%;
+}
+.form-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.my-look-up-container {
+    border: 1px solid black;
+    border-radius: 40px;
+    width: fit-content;
+    padding-left: 10px;
+}
+#my-look-up {
+    width: 400px;
+    font-size: 1.05rem;
+    border: none;
+    border-style: none;
+}
+#my-look-up:focus-visible {
+    outline: none;
+}
+#my-look-up-btn {
+    display: inline;
+    border-radius: 40px;
+    padding: 10px 5px;
+}
