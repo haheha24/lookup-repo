@@ -6,7 +6,6 @@ const Header = ({ title }) => {
       <div className="title-container">
         <h1 className="site-title">{title}</h1>
       </div>
-
       <Form />
     </header>
   );
