@@ -52,7 +52,22 @@ body {
   background-color:aqua;
   margin-top: 20px;
   margin: 10px auto;
+  cursor: pointer;
 }
 #my-look-up-btn:hover {
   background-color: aquamarine;
+}
+
+/* Display Data */
+.display-container {
+  width: 50%;
+  margin: 25px auto;
+}
+.dataList {
+  list-style-type: none;
+  background-color: aliceblue;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px auto;
 }

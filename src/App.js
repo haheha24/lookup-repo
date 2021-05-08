@@ -1,30 +1,35 @@
 import Header from "./components/Header";
-import Data from "./components/Data";
+import Display from "./components/Display";
+
+/* var express = require("express");
+var app = express();
+ 
+app.get("/", (req, res) => {
+ res.send("Hello World");
+}); */
 
 const App = () => {
-  const idGen = Math.floor(Math.random() * 10000 + 1);
   const storedData = [
     {
-      id: `${idGen}`,
       firstName: "Adrian",
-      lastName: "Penino",
+      lastName: "Penino"
     },
     {
-      id: `${idGen}`,
       firstName: "Danielle",
-      lastName: "The Goof",
+      lastName: "The Goof"
     },
     {
-      id: `${idGen}`,
       firstName: "Abby",
-      lastName: "McStabby",
+      lastName: "McStabby"
     }
-  ];
+  ]
+
 
   return (
     <div>
       <Header />
-      <Data />
+      
+      <Display storedData={storedData} /*add a key */ />
     </div>
   );
 };
