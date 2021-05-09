@@ -8,6 +8,8 @@ app.get("/", (req, res) => {
  res.send("Hello World");
 }); */
 
+
+
 const App = () => {
   const storedData = [
     {
@@ -23,11 +25,17 @@ const App = () => {
       lastName: "McStabby"
     }
   ]
-
+  console.log(storedData)
+//fix up the pushed data, it's only taking in the empty strings
+  const onSubmit = (e) => {
+    /* e.preventDefualt()
+    storedData.push(e)
+    console.log(storedData) */
+  }
 
   return (
     <div>
-      <Header />
+      <Header onSubmit={onSubmit} />
       
       <Display storedData={storedData} /*add a key */ />
     </div>

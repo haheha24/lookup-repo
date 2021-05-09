@@ -1,15 +1,20 @@
 import PropTypes from "prop-types";
+import {useState} from 'react';
 
-const Input = ({ label, type, name }) => {
-
-  const addInput = (e) => {
-    
-  }
+const Input = ({label, type, name}) => {
+  const [val, setValue] = useState('')
 
   return (
     <div className="my-look-up-container">
       <label style={{ marginLeft: 20, fontSize: 20 }}>{label}</label>
-      <input type={type} className="my-look-up" name={name} required />
+      <input
+        type={type}
+        className="my-look-up"
+        name={name}
+        onChange={(e) => setValue(e.target.value)}
+        value={val}
+        required
+      />
     </div>
   );
 };

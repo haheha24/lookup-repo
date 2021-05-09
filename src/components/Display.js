@@ -1,4 +1,4 @@
-const Display = ({ storedData}) => {
+const Display = ({storedData}) => {
   const mapData = storedData.map((data) => (
     <li /*add a key */ className="dataList">
       {data.firstName} {data.lastName}

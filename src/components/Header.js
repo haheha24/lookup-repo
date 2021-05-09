@@ -1,12 +1,12 @@
 import Form from "./Form";
 
-const Header = ({ title }) => {
+const Header = ({ title, onSubmit }) => {
   return (
     <header id="header">
       <div className="title-container">
         <h1 className="site-title">{title}</h1>
       </div>
-      <Form />
+      <Form onSubmit={onSubmit} />
     </header>
   );
 };
