@@ -30,7 +30,7 @@ const Form = () => {
     <div>
       <form className="form-container" onSubmit={handleSubmit}>
         <div className="my-look-up-container">
-          <label style={{ marginLeft: 20, fontSize: 20 }}>First Name</label>
+          <label class="my-look-up-label">First Name</label>
           <input
             type="text"
             className="my-look-up"
@@ -41,7 +41,7 @@ const Form = () => {
           />
         </div>
         <div className="my-look-up-container">
-          <label style={{ marginLeft: 20, fontSize: 20 }}>First Name</label>
+          <label class="my-look-up-label">Last Name</label>
           <input
             type="text"
             className="my-look-up"

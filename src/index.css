@@ -11,7 +11,7 @@ body {
 /* Header */
 #header {
   background-color: aliceblue ;
-  margin: 0 25%;
+  margin: 0 15%;
   padding: 20px 0;
   border-radius: 25%;
 }
@@ -26,21 +26,25 @@ body {
 /* FORM */
 .form-container {
   margin: 0 auto;
-  width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 .my-look-up-container {
   display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  
+  justify-content: space-evenly;
+  margin: 10px 0;
+}
+.my-look-up-label {
+  margin-left: 20px;
+  font-size: 20px;
 }
 .my-look-up {
   font-size: 1.05rem;
   border-radius: 40px;
-  flex-grow: 2;
   padding: 7.5px 5px 7.5px 10px;
+  min-width: 30%;
+  margin: 0 22.5% 0 0;
 }
 .my-look-up:focus-visible {
   outline: none;
@@ -69,4 +73,21 @@ body {
   padding: 10px;
   border-radius: 10px;
   margin: 10px auto;
+}
+
+/* 600px responsive */
+@media screen and (max-width: 650px) {
+  #header {
+    margin: 0 15%;
+  }
+  .my-look-up-container {
+    flex-direction: column;
+  }
+  .my-look-up-label {
+    margin: 0;
+    text-align: center;
+  }
+  .my-look-up {
+    margin: 0 11.25%;
+  }
 }
