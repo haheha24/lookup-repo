@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import {useState} from 'react';
 
-const Input = ({label, type, name}) => {
+const Input = ({label, type, name, id}) => {
   const [val, setValue] = useState('')
 
   return (
@@ -10,6 +10,7 @@ const Input = ({label, type, name}) => {
       <input
         type={type}
         className="my-look-up"
+        id={id}
         name={name}
         onChange={(e) => setValue(e.target.value)}
         value={val}

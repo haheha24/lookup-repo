@@ -1,5 +1,4 @@
-import Header from "./components/Header";
-import Display from "./components/Display";
+import Header from "./components/Header"
 
 /* var express = require("express");
 var app = express();
@@ -11,33 +10,11 @@ app.get("/", (req, res) => {
 
 
 const App = () => {
-  const storedData = [
-    {
-      firstName: "Adrian",
-      lastName: "Penino"
-    },
-    {
-      firstName: "Danielle",
-      lastName: "The Goof"
-    },
-    {
-      firstName: "Abby",
-      lastName: "McStabby"
-    }
-  ]
-  console.log(storedData)
-//fix up the pushed data, it's only taking in the empty strings
-  const onSubmit = (e) => {
-    /* e.preventDefualt()
-    storedData.push(e)
-    console.log(storedData) */
-  }
+  
 
   return (
     <div>
-      <Header onSubmit={onSubmit} />
-      
-      <Display storedData={storedData} /*add a key */ />
+      <Header />
     </div>
   );
 };
