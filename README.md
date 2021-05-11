@@ -1,3 +1,9 @@
+Hi, this is my first react project. I have created a simple input and display.
+The purpose of this was to practice learning ReactJS, utilising React Hooks and Props, learn JSX, learn about state and the significance of immutability and mutation of objects.
+
+At the moment I have only used React. I plan to use this project to incorporate back-end features as a means to learn about databases (mongoDB), and server requests (nodejs + express). I also need to understand CORS policy.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
