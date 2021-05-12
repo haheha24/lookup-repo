@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-import Input from "./Input";
 import { useState } from "react";
 
 const Form = () => {
@@ -76,13 +74,6 @@ const Form = () => {
       </form>
     </div>
   );
-};
-
-Input.propTypes = {
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  stateData: PropTypes.array,
 };
 
 export default Form;
