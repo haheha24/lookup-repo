@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from "react"
+import Display from './Display.js'
 
 const Form = () => {
   const [fName, setFName] = useState("");
@@ -52,7 +53,8 @@ const Form = () => {
         <button type="submit" id="my-look-up-btn">
           <span style={{ fontSize: 20 }}>Create</span>
         </button>
-        <div className="display-container">
+        <Display stateData={stateData} />
+        {/* <div className="display-container">
           <ul className="dataUlist">
             {stateData.length > 1 ? (
               stateData.map((storedData) => {
@@ -70,7 +72,7 @@ const Form = () => {
               <li className="dataList">There is no Data</li>
             ) : null}
           </ul>
-        </div>
+        </div> */}
       </form>
     </div>
   );
