@@ -1,3 +1,5 @@
+import { FaTimes } from 'react-icons/fa'
+
 const Display = ({stateData}) => {
 
 
@@ -8,13 +10,13 @@ const Display = ({stateData}) => {
               stateData.map((storedData) => {
                 return (
                   <li key={storedData.firstName} className="dataList">
-                    {storedData.firstName} {storedData.lastName}
+                    {storedData.firstName} {storedData.lastName} <FaTimes style={{color: 'red', cursor: 'pointer'}} />
                   </li>
                 );
               })
             ) : stateData.length === 1 ? (
               <li className="dataList">
-                {stateData[0].firstName} {stateData[0].lastName}
+                {stateData[0].firstName} {stateData[0].lastName} <FaTimes style={{color: 'red', cursor: 'pointer'}} />
               </li>
             ) : stateData.length === 0 ? (
               <li className="dataList">There is no Data</li>

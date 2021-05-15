@@ -6,11 +6,15 @@ const Form = () => {
   const [lName, setLName] = useState("");
   const [stateData, setData] = useState([]);
 
+
+  //Submits the data 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //how to push the data as an object into storedData?!
-    /* const counter = stateData.length; */
+    //WHy don't the inputs clear the previous values?? even though the states are clearing.
+    if (fName && lName === null) {
+      return alert("Please fill in the fields")
+    }
 
     setData(stateData.concat({ firstName: fName, lastName: lName }));
     console.log(stateData);
@@ -19,11 +23,10 @@ const Form = () => {
     setLName("");
   };
 
-  /*   const mapData = stateData.map((storedData, index) => {
-    <li key={storedData[index].firstName} className="dataList">
-      {storedData[index].firstName} {storedData[index].lastName}
-    </li>;
-  }); */
+  //Deletes the data with a button click
+  /* const deleteData = (e) => {
+    n
+  } */
 
   return (
     <div>
@@ -54,25 +57,6 @@ const Form = () => {
           <span style={{ fontSize: 20 }}>Create</span>
         </button>
         <Display stateData={stateData} />
-        {/* <div className="display-container">
-          <ul className="dataUlist">
-            {stateData.length > 1 ? (
-              stateData.map((storedData) => {
-                return (
-                  <li key={storedData.firstName} className="dataList">
-                    {storedData.firstName} {storedData.lastName}
-                  </li>
-                );
-              })
-            ) : stateData.length === 1 ? (
-              <li className="dataList">
-                {stateData[0].firstName} {stateData[0].lastName}
-              </li>
-            ) : stateData.length === 0 ? (
-              <li className="dataList">There is no Data</li>
-            ) : null}
-          </ul>
-        </div> */}
       </form>
     </div>
   );
