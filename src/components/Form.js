@@ -12,14 +12,11 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-<<<<<<< HEAD
-=======
     //WHy don't the inputs clear the previous values?? even though the states are clearing.
     if (fName && lName === null) {
       return alert("Please fill in the fields")
     }
 
->>>>>>> d51a5d3629996397883310d759220e3dfb063ee2
     setData(stateData.concat({ firstName: fName, lastName: lName }));
     console.log(stateData);
 
@@ -27,14 +24,11 @@ const Form = () => {
     setLName("");
   };
 
-<<<<<<< HEAD
-=======
   //Deletes the data with a button click
   /* const deleteData = (e) => {
     n
   } */
 
->>>>>>> d51a5d3629996397883310d759220e3dfb063ee2
   return (
     <div>
       <form className="form-container" onSubmit={handleSubmit}>
