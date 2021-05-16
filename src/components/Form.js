@@ -6,28 +6,25 @@ const Form = () => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [stateData, setData] = useState([]);
+  const [idData, setId] = useState(0)
 
 
   //Submits the data 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //WHy don't the inputs clear the previous values?? even though the states are clearing.
-    if (fName && lName === null) {
-      return alert("Please fill in the fields")
-    }
-
-    setData(stateData.concat({ firstName: fName, lastName: lName }));
+    setData(stateData.concat({ id: idData, firstName: fName, lastName: lName }));
     console.log(stateData);
 
+    setId(idData + 1);
     setFName("");
     setLName("");
   };
 
   //Deletes the data with a button click
-  /* const deleteData = (e) => {
-    n
-  } */
+  const deleteData = (id) => {
+    setData(stateData.filter((data) => data.id !== id ))
+  }
 
   return (
     <div>
@@ -40,6 +37,7 @@ const Form = () => {
             id="firstName"
             name="firstName"
             onChange={(e) => setFName(e.target.value)}
+            value={fName}
             required
           />
         </div>
@@ -51,13 +49,14 @@ const Form = () => {
             id="lastName"
             name="lastName"
             onChange={(e) => setLName(e.target.value)}
+            value={lName}
             required
           />
         </div>
         <button type="submit" id="my-look-up-btn">
           <span style={{ fontSize: 20 }}>Create</span>
         </button>
-        <Display stateData={stateData} />
+        <Display stateData={stateData} deleteData={deleteData} id={idData} />
       </form>
     </div>
   );
