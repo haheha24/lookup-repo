@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 const Form = () => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
@@ -8,21 +9,12 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //how to push the data as an object into storedData?!
-    /* const counter = stateData.length; */
-
     setData(stateData.concat({ firstName: fName, lastName: lName }));
     console.log(stateData);
 
     setFName("");
     setLName("");
   };
-
-  /*   const mapData = stateData.map((storedData, index) => {
-    <li key={storedData[index].firstName} className="dataList">
-      {storedData[index].firstName} {storedData[index].lastName}
-    </li>;
-  }); */
 
   return (
     <div>
