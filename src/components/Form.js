@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from "react"
+import Display from './Display.js'
 
 
 const Form = () => {
@@ -6,9 +7,19 @@ const Form = () => {
   const [lName, setLName] = useState("");
   const [stateData, setData] = useState([]);
 
+
+  //Submits the data 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+<<<<<<< HEAD
+=======
+    //WHy don't the inputs clear the previous values?? even though the states are clearing.
+    if (fName && lName === null) {
+      return alert("Please fill in the fields")
+    }
+
+>>>>>>> d51a5d3629996397883310d759220e3dfb063ee2
     setData(stateData.concat({ firstName: fName, lastName: lName }));
     console.log(stateData);
 
@@ -16,6 +27,14 @@ const Form = () => {
     setLName("");
   };
 
+<<<<<<< HEAD
+=======
+  //Deletes the data with a button click
+  /* const deleteData = (e) => {
+    n
+  } */
+
+>>>>>>> d51a5d3629996397883310d759220e3dfb063ee2
   return (
     <div>
       <form className="form-container" onSubmit={handleSubmit}>
@@ -44,25 +63,7 @@ const Form = () => {
         <button type="submit" id="my-look-up-btn">
           <span style={{ fontSize: 20 }}>Create</span>
         </button>
-        <div className="display-container">
-          <ul className="dataUlist">
-            {stateData.length > 1 ? (
-              stateData.map((storedData) => {
-                return (
-                  <li key={storedData.firstName} className="dataList">
-                    {storedData.firstName} {storedData.lastName}
-                  </li>
-                );
-              })
-            ) : stateData.length === 1 ? (
-              <li className="dataList">
-                {stateData[0].firstName} {stateData[0].lastName}
-              </li>
-            ) : stateData.length === 0 ? (
-              <li className="dataList">There is no Data</li>
-            ) : null}
-          </ul>
-        </div>
+        <Display stateData={stateData} />
       </form>
     </div>
   );
