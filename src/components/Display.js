@@ -27,7 +27,7 @@ const Display = ({ id, stateData, deleteData }) => {
               style={{
                 color: "red",
                 cursor: "pointer",
-                verticalAlign: "middle",
+                verticalAlign: "middle", 
               }}
               onClick={() => deleteData(stateData[0].id)}
             />
