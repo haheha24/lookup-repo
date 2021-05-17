@@ -30,7 +30,7 @@ const Form = () => {
     <div>
       <form className="form-container" onSubmit={handleSubmit}>
         <div className="my-look-up-container">
-          <label class="my-look-up-label">First Name</label>
+          <label className="my-look-up-label">First Name</label>
           <input
             type="text"
             className="my-look-up"
@@ -42,7 +42,7 @@ const Form = () => {
           />
         </div>
         <div className="my-look-up-container">
-          <label class="my-look-up-label">Last Name</label>
+          <label className="my-look-up-label">Last Name</label>
           <input
             type="text"
             className="my-look-up"
@@ -56,7 +56,7 @@ const Form = () => {
         <button type="submit" id="my-look-up-btn">
           <span style={{ fontSize: 20 }}>Create</span>
         </button>
-        <Display stateData={stateData} deleteData={deleteData} id={idData} />
+        <Display stateData={stateData} deleteData={deleteData} />
       </form>
     </div>
   );
