@@ -1,4 +1,4 @@
-import Form from "./Form";
+import Form from "./Form.js";
 
 const Header = ({ title }) => {
   return (
@@ -6,6 +6,7 @@ const Header = ({ title }) => {
       <div className="title-container">
         <h1 className="site-title">{title}</h1>
       </div>
+      <Form />
       <Form />
     </header>
   );

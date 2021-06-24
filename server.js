@@ -1,13 +1,14 @@
-console.log('this is my server')
-const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-
-app.listen(3000, () => {
-    console.log('Listening on 3000')
+const port = 4000
+ 
+app.get("/", (req, res) => {
+ res.send("Hello World")
 })
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.listen(port, () => {
+  console.log(`app is listening on port http://localhost:${port}`)
+})
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/lookupdb.js')
@@ -15,6 +16,11 @@ app.get('/', (req, res) => {
     console.log(__dirname)
 })
 
-app.post('/names', (req, res) => {
+app.post('/lookupdb', (req, res) => {
     console.log(req.body)
+    res.send('POST request to lookupdb')
 })
+
+
+//READ UP ABOUT POST AND HOW TO POST FROM A FORM ELEMENT
+//READ UP/THINK ABOUT A SERVER'S ROLE IN A POST METHOD

@@ -31,7 +31,7 @@ const Form = () => {
       <form
         className="form-container"
         onSubmit={handleSubmit}
-        action="/names"
+        action="/lookupdb.js"
         method="POST"
       >
         <div className="my-look-up-container">

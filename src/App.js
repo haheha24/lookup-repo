@@ -1,17 +1,6 @@
-import Header from "./components/Header"
-
-/* var express = require("express");
-var app = express();
- 
-app.get("/", (req, res) => {
- res.send("Hello World");
-}); */
-
-
+import Header from "./components/Header.js"
 
 const App = () => {
-  
-
   return (
     <div>
       <Header />
