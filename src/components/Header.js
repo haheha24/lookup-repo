@@ -7,7 +7,6 @@ const Header = ({ title }) => {
         <h1 className="site-title">{title}</h1>
       </div>
       <Form />
-      <Form />
     </header>
   );
 };
