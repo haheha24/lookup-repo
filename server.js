@@ -1,8 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-
 const mongoose = require("mongoose");
-const port = 4000;
 
 // Connects to the database
 mongoose.connect("mongodb://localhost:27017/lookup", {
@@ -31,6 +28,7 @@ app.get('*', function(req, res){
   res.send('Invalid URL');
 })
 
+const port = 4000;
 app.listen(port, () => {
   console.log(`app is listening on port http://localhost:${port}`);
 })
