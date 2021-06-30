@@ -1,19 +1,19 @@
-import { useState } from "react"
-import Display from './Display.js'
-
+import { useState } from "react";
+import Display from "./Display.js";
 
 const Form = () => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [stateData, setData] = useState([]);
-  const [idData, setId] = useState(0)
+  const [idData, setId] = useState(0);
 
-
-  //Submits the data 
+  //Submits the data
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setData(stateData.concat({ id: idData, firstName: fName, lastName: lName }));
+    setData(
+      stateData.concat({ id: idData, firstName: fName, lastName: lName })
+    );
     console.log(stateData);
 
     setId(idData + 1);
@@ -23,12 +23,17 @@ const Form = () => {
 
   //Deletes the data with a button click
   const deleteData = (id) => {
-    setData(stateData.filter((data) => data.id !== id ))
-  }
+    setData(stateData.filter((data) => data.id !== id));
+  };
 
   return (
     <div>
-      <form className="form-container" onSubmit={handleSubmit}>
+      <form
+        className="form-container"
+        onSubmit={handleSubmit}
+        action="/server.js"
+        method="POST"
+      >
         <div className="my-look-up-container">
           <label className="my-look-up-label">First Name</label>
           <input
