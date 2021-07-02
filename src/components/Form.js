@@ -1,29 +1,42 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import Display from "./Display.js";
 
 const Form = () => {
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
+  //Initalise Inputs from the Form as states.
+  const [input, setInput] = useReducer(
+    (initialInput, newInput) => ({ ...initialInput, ...newInput }),
+    {
+      firstName: "",
+      lastName: "",
+      email: "",
+    }
+  );
+
+  //Initialise stateData
   const [stateData, setData] = useState([]);
-  const [idData, setId] = useState(0);
 
   //Submits the data
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setData(
-      stateData.concat({ id: idData, firstName: fName, lastName: lName })
+      stateData.concat({
+        firstName: input.firstName,
+        lastName: input.lastName,
+        email: input.email,
+      })
     );
-    console.log(stateData);
-
-    setId(idData + 1);
-    setFName("");
-    setLName("");
   };
 
   //Deletes the data with a button click
   const deleteData = (id) => {
     setData(stateData.filter((data) => data.id !== id));
+  };
+
+  //Sets the handler
+  const handleInputs = (e) => {
+    const { name, value } = e.target;
+    setInput({ [name]: value });
   };
 
   return (
@@ -41,8 +54,8 @@ const Form = () => {
             className="my-look-up"
             id="firstName"
             name="firstName"
-            onChange={(e) => setFName(e.target.value)}
-            value={fName}
+            onChange={(e) => handleInputs(e)}
+            value={input.firstName}
             required
           />
         </div>
@@ -53,8 +66,20 @@ const Form = () => {
             className="my-look-up"
             id="lastName"
             name="lastName"
-            onChange={(e) => setLName(e.target.value)}
-            value={lName}
+            onChange={(e) => handleInputs(e)}
+            value={input.lastName}
+            required
+          />
+        </div>
+        <div className="my-look-up-container">
+          <label className="my-look-up-label">Email</label>
+          <input
+            type="email"
+            className="my-look-up"
+            id="email"
+            name="email"
+            onChange={(e) => handleInputs(e)}
+            value={input.email}
             required
           />
         </div>

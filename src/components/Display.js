@@ -5,7 +5,9 @@ const Display = ({ stateData, deleteData }) => {
     return stateData.map((storedData, index) => {
       return (
         <li key={storedData.id} className="dataList">
-          {storedData.firstName} {storedData.lastName}{" "}
+          First Name: <u>{storedData.firstName}</u><br /> 
+          Last Name: <u>{storedData.lastName}</u><br /> 
+          Email: <u>{storedData.email}</u>{" "}
           <FaTimes
             style={{
               color: "red",
@@ -20,7 +22,9 @@ const Display = ({ stateData, deleteData }) => {
   } else if (stateData.length === 1) {
     return (
       <li className="dataList">
-        {stateData[0].firstName} {stateData[0].lastName}{" "}
+        First name: <u>{stateData[0].firstName}</u><br /> 
+        Last name: <u>{stateData[0].lastName}</u><br /> 
+        Email: <u>{stateData[0].email}</u>{" "}
         <FaTimes
           style={{
             color: "red",
