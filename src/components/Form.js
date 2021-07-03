@@ -18,7 +18,7 @@ const Form = () => {
   useEffect(() => {
     const getData = async () => {
       const DataFromServer = await callData();
-      setData(DataFromServer);
+      setData(DataFromServer.userObj);
     };
     getData();
   }, []);
@@ -33,7 +33,6 @@ const Form = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
     return data;
   };
 
@@ -49,10 +48,15 @@ const Form = () => {
       body: JSON.stringify(form),
     });
     const data = await res.json();
-    setData([...stateData, data]); /*...stateData is not an iterable typeerror INVESTIGATE*/
+    /* setData((prevState) => {
+      [...prevState, data]
+    }) */
+    //the comment above does not work, however the one below works. Maybe data.userObj made the difference.
+    setData((prevState) => [...prevState, data.userObj])
+    console.log(stateData)
   };
 
-  //Submits the data
+  //Submits the data when the create button is clicked.
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -61,9 +65,9 @@ const Form = () => {
 
   //Deletes the data with a button click
   const deleteData = (id) => {
-    console.log(id);
-    console.log(stateData);
+    console.log(stateData)
     setData(stateData.filter((data) => data.id !== id));
+    console.log(stateData)
   };
 
   //Sets the handler
