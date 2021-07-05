@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+
 
 // Connects to the database
 mongoose.connect("mongodb://localhost:27017/lookup", {
@@ -12,13 +14,15 @@ mongoose.connection.on(
   console.error.bind(console, "connection error:")
 );
 
+// initialise express
 const app = express();
 
+// Enables cors
+app.use(cors());
+
+// Require routes
 const routes = require('./routes/index.js')
 app.use('/routes/index', routes)
-
-/* const users = require('./routes/users.js')
-app.use('/routes/users', users) */
 
 app.get('/', (req, res) => {
   res.send('server')
@@ -28,6 +32,7 @@ app.get('*', function(req, res){
   res.send('Invalid URL');
 })
 
+// Listen on port 4000
 const port = 4000;
 app.listen(port, () => {
   console.log(`app is listening on port http://localhost:${port}`);
