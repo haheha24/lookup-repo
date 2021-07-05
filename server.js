@@ -24,10 +24,6 @@ app.use(cors());
 const routes = require('./routes/index.js')
 app.use('/routes/index', routes)
 
-app.get('/', (req, res) => {
-  res.send('server')
-})
-
 app.get('*', function(req, res){
   res.send('Invalid URL');
 })
