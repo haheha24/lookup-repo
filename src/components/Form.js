@@ -15,13 +15,14 @@ const Form = () => {
   //Initialise stateData
   const [stateData, setData] = useState([]);
 
+  // Load and display database into view
   useEffect(() => {
     const getData = async () => {
       const DataFromServer = await callData();
       setData(DataFromServer.userObj);
     };
     getData();
-  }, []);
+  }, [stateData]);
 
   const callData = async () => {
     const res = await fetch("http://localhost:4000/routes/index/users/read", {
@@ -52,8 +53,7 @@ const Form = () => {
       [...prevState, data]
     }) */
     //the comment above does not work, however the one below works. Maybe data.userObj made the difference.
-    setData((prevState) => [...prevState, data.userObj])
-    console.log(stateData)
+    setData((prevState) => [...prevState, data.userObj]);
   };
 
   //Submits the data when the create button is clicked.
@@ -64,10 +64,12 @@ const Form = () => {
   };
 
   //Deletes the data with a button click
-  const deleteData = (id) => {
-    console.log(stateData)
-    setData(stateData.filter((data) => data.id !== id));
-    console.log(stateData)
+  const deleteData = async (id) => {
+    const res = await fetch(`http://localhost:4000/routes/index/users/delete/${id}`, {
+      method: "DELETE",
+    });
+    const deleteID = await res.json()
+    setData(stateData.filter((data) => data._id !== deleteID.objectId));
   };
 
   //Sets the handler

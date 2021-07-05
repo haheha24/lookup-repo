@@ -1,30 +1,34 @@
 const express = require("express");
 const router = express.Router();
-const cors = require("cors");
-router.use(cors());
-/* const mongoose = require("mongoose"); */
+/* const cors = require("cors"); */
 
-router.get("/add", (req, res) => {
-  res.send("looks like you're trying to add something");
+router.use(express.json()); //For JSON requests
+router.use(express.urlencoded({ extended: true }));
+/* router.use(cors()); */
+
+router.get("/", (req, res) => {
+  res.send("looks like you're trying to do something");
 });
 
 //CREATE A NEW ROUTER.GET TO READ THE DATABASE AND ADD IT TO THE STATE ON FORM.JS USING FETCH.
-router.get("/read", (req, res, next) => {
+router.get("/read", (req, res) => {
   userModel.find((err, users) => {
     if (err) {
       res.send(err);
     } else {
-      res.send({ status: 200, message: "Succesfully read documents", userObj: users })
+      res.send({
+        status: 200,
+        message: "Succesfully read documents",
+        userObj: users,
+      });
     }
   });
 });
 
 //POST REQUESTS TO ADD A NEW DOCUMENT
-router.use(express.json()); //For JSON requests
-router.use(express.urlencoded({ extended: true }));
 const userModel = require("../model/users-model.js");
 
-router.post("/add", (req, res, next) => {
+router.post("/add", (req, res) => {
   let newUser = new userModel({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -41,6 +45,26 @@ router.post("/add", (req, res, next) => {
       });
     }
   });
+});
+
+//DELETE REQUEST TO DELETE DOCUMENTS
+router.delete("/delete/:id", (req, res) => {
+  const id = {_id: req.params.id};
+  userModel.findByIdAndDelete(id, function (err) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send({
+        status: 200,
+        message: "Successfuly deleted document",
+        objectId: id,
+      });
+    }
+  });
+});
+
+router.get("/delete", (req, res) => {
+  res.send("delete");
 });
 
 module.exports = router;
