@@ -3,21 +3,18 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 // Connects to the database
-mongoose.connect(
-  process.env.DB_URI_KEY || process.env.DB_LH_KEY,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.DB_URI || 'http://localhost:3001', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 mongoose.connection.on(
   "error",
   console.error.bind(console, "connection error:")
 );
 mongoose.connection.once("open", () => {
-  console.log(`Connected successfully to database`)
-})
+  console.log(`Connected successfully to database`);
+});
 
 // initialise express
 const app = express();
@@ -29,12 +26,17 @@ app.use(cors());
 const routes = require("./routes/index.js");
 app.use("/routes/index", routes);
 
-app.get("*", function (req, res) {
-  res.send("Invalid URL");
-});
+// Serve React static files
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("/build"));
 
-// Listen on port 4000
-const port = 4000;
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
+
+// Listen on port 3001
+const port = process.env.SERVER_PORT || 3001
 app.listen(port, () => {
   console.log(`app is listening on port http://localhost:${port}`);
 });

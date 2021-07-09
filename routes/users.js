@@ -10,6 +10,9 @@ router.get("/", (req, res) => {
   res.send("looks like you're trying to do something");
 });
 
+//POST REQUESTS TO ADD A NEW DOCUMENT
+const userModel = require("../model/users-model.js");
+
 //CREATE A NEW ROUTER.GET TO READ THE DATABASE AND ADD IT TO THE STATE ON FORM.JS USING FETCH.
 router.get("/read", (req, res) => {
   userModel.find((err, users) => {
@@ -24,9 +27,6 @@ router.get("/read", (req, res) => {
     }
   });
 });
-
-//POST REQUESTS TO ADD A NEW DOCUMENT
-const userModel = require("../model/users-model.js");
 
 router.post("/add", (req, res) => {
   let newUser = new userModel({
