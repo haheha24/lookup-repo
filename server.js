@@ -36,8 +36,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Listen on port 3001
-const port = process.env.SERVER_PORT || 3001
+// Listen on port 3000
+const port = process.env.PORT || 3000
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
