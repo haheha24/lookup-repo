@@ -31,12 +31,12 @@ const Form = () => {
   const callData = async () => {
     try {
       const res = await fetch(
-        "https://lookup-project.herokuapp.com/routes/index/users/read",
+        `https://lookup-project.herokuapp.com:${process.env.PORT}/routes/index/users/read`,
         {
           method: "GET",
           headers: {
             "Access-Control-Allow-Origin":
-              "https://lookup-project.herokuapp.com/routes/index/users/read",
+              `https://lookup-project.herokuapp.com:${process.env.PORT}/routes/index/users/read`,
             "Content-Type": "application/json",
           },
         }
@@ -52,12 +52,12 @@ const Form = () => {
   const addData = async (form) => {
     try {
       const res = await fetch(
-        "https://lookup-project.herokuapp.com/routes/index/users/add",
+        `https://lookup-project.herokuapp.com:${process.env.PORT}/routes/index/users/add`,
         {
           method: "POST",
           headers: {
             "Access-Control-Allow-Origin":
-              "https://lookup-project.herokuapp.com/routes/index/users/add",
+              `https://lookup-project.herokuapp.com:${process.env.PORT}/routes/index/users/add`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(form),
@@ -85,7 +85,7 @@ const Form = () => {
   const deleteData = async (id) => {
     try {
       const res = await fetch(
-        `https://lookup-project.herokuapp.com/routes/index/users/delete/${id}`,
+        `https://lookup-project.herokuapp.com:${process.env.PORT}/routes/index/users/delete/${id}`,
         {
           method: "DELETE",
         }
