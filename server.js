@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require('dotenv').config
 
 // Connects to the database
 mongoose.connect(process.env.REACT_APP_URI|| process.env.REACT_APP_URILOCAL, {
