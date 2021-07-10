@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 // Connects to the database
-mongoose.connect(process.env.DB_URI || 'http://localhost:3001', {
+mongoose.connect(process.env.REACT_APP_URI|| process.env.REACT_APP_URILOCAL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
