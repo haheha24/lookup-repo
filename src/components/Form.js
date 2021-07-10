@@ -18,42 +18,60 @@ const Form = () => {
   // Load and display database into view
   useEffect(() => {
     const getData = async () => {
-      const DataFromServer = await callData();
-      setData(DataFromServer.userObj);
+      try {
+        const DataFromServer = await callData();
+        setData(DataFromServer.userObj);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getData();
   }, [stateData]);
 
   const callData = async () => {
-    const res = await fetch("https://lookup-project.herokuapp.com/routes/index/users/read", {
-      method: "GET",
-      headers: {
-        "Access-Control-Allow-Origin":
-          "https://lookup-project.herokuapp.com/routes/index/users/read",
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-    return data;
+    try {
+      const res = await fetch(
+        "https://lookup-project.herokuapp.com/routes/index/users/read",
+        {
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin":
+              "https://lookup-project.herokuapp.com/routes/index/users/read",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Fetch and add data to server
   const addData = async (form) => {
-    const res = await fetch("https://lookup-project.herokuapp.com/routes/index/users/add", {
-      method: "POST",
-      headers: {
-        "Access-Control-Allow-Origin":
-          "https://lookup-project.herokuapp.com/routes/index/users/add",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
-    const data = await res.json();
-    /* setData((prevState) => {
+    try {
+      const res = await fetch(
+        "https://lookup-project.herokuapp.com/routes/index/users/add",
+        {
+          method: "POST",
+          headers: {
+            "Access-Control-Allow-Origin":
+              "https://lookup-project.herokuapp.com/routes/index/users/add",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
+      const data = await res.json();
+      /* setData((prevState) => {
       [...prevState, data]
     }) */
-    //the comment above does not work, however the one below works. Maybe data.userObj made the difference.
-    setData((prevState) => [...prevState, data.userObj]);
+      //the comment above does not work, however the one below works. Maybe data.userObj made the difference.
+      setData((prevState) => [...prevState, data.userObj]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Submits the data when the create button is clicked.
@@ -65,11 +83,18 @@ const Form = () => {
 
   //Deletes the data with a button click
   const deleteData = async (id) => {
-    const res = await fetch(`https://lookup-project.herokuapp.com/routes/index/users/delete/${id}`, {
-      method: "DELETE",
-    });
-    const deleteID = await res.json()
-    setData(stateData.filter((data) => data._id !== deleteID.objectId));
+    try {
+      const res = await fetch(
+        `https://lookup-project.herokuapp.com/routes/index/users/delete/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const deleteID = await res.json();
+      setData(stateData.filter((data) => data._id !== deleteID.objectId));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Sets the handler
