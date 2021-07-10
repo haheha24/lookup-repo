@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === "production") {
 // Listen on port 3001
 const port = process.env.SERVER_PORT || 3001
 app.listen(port, () => {
-  console.log(`app is listening on port http://localhost:${port}`);
+  console.log(`app is listening on port ${port}`);
 });
 
 //READ UP ABOUT POST AND HOW TO POST FROM A FORM ELEMENT

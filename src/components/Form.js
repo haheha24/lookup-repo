@@ -25,11 +25,11 @@ const Form = () => {
   }, [stateData]);
 
   const callData = async () => {
-    const res = await fetch("https://lookup-project.herokuapp.com//routes/index/users/read", {
+    const res = await fetch("https://lookup-project.herokuapp.com/routes/index/users/read", {
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin":
-          "https://lookup-project.herokuapp.com//routes/index/users/read",
+          "https://lookup-project.herokuapp.com/routes/index/users/read",
         "Content-Type": "application/json",
       },
     });
@@ -39,11 +39,11 @@ const Form = () => {
 
   //Fetch and add data to server
   const addData = async (form) => {
-    const res = await fetch("https://lookup-project.herokuapp.com//routes/index/users/add", {
+    const res = await fetch("https://lookup-project.herokuapp.com/routes/index/users/add", {
       method: "POST",
       headers: {
         "Access-Control-Allow-Origin":
-          "https://lookup-project.herokuapp.com//routes/index/users/add",
+          "https://lookup-project.herokuapp.com/routes/index/users/add",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(form),
@@ -65,7 +65,7 @@ const Form = () => {
 
   //Deletes the data with a button click
   const deleteData = async (id) => {
-    const res = await fetch(`https://lookup-project.herokuapp.com//routes/index/users/delete/${id}`, {
+    const res = await fetch(`https://lookup-project.herokuapp.com/routes/index/users/delete/${id}`, {
       method: "DELETE",
     });
     const deleteID = await res.json()
