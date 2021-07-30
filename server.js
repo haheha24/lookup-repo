@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require('dotenv').config
+const path = require("path");
+require("dotenv").config;
 
 // Connects to the database
-mongoose.connect(process.env.REACT_APP_URI|| process.env.REACT_APP_URILOCAL, {
+mongoose.connect(process.env.REACT_APP_URI || process.env.REACT_APP_URILOCAL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -20,6 +21,20 @@ mongoose.connection.once("open", () => {
 // initialise express
 const app = express();
 
+// Serve React static files
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/build")));
+
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+  app.get("/", (req, res) => {
+    res.send("Api running");
+  });
+} else {
+  
+}
+
 // Enables cors
 app.use(cors());
 
@@ -27,17 +42,8 @@ app.use(cors());
 const routes = require("./routes/index.js");
 app.use("/routes/index", routes);
 
-// Serve React static files
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("/build"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-  });
-}
-
 // Listen on port 3000
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
