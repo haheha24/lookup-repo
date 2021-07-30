@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
-/* const cors = require("cors"); */
 
 router.use(express.json()); //For JSON requests
 router.use(express.urlencoded({ extended: true }));
-/* router.use(cors()); */
 
 router.get("/", (req, res) => {
   res.send("looks like you're trying to do something");
@@ -49,7 +47,7 @@ router.post("/add", (req, res) => {
 
 //DELETE REQUEST TO DELETE DOCUMENTS
 router.delete("/delete/:id", (req, res) => {
-  const id = {_id: req.params.id};
+  const id = { _id: req.params.id };
   userModel.findByIdAndDelete(id, function (err) {
     if (err) {
       res.send(err);
