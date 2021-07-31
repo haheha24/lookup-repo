@@ -18,7 +18,7 @@ const Form = () => {
   // Load and display database into view
   useEffect(() => {
     getData();
-  }, [stateData]);// eslint-disable-line react-hooks/exhaustive-deps
+  }, [setData]);// eslint-disable-line react-hooks/exhaustive-deps
 
   const getData = async () => {
     try {
@@ -32,12 +32,12 @@ const Form = () => {
   const callData = async () => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_HOMEURL}/routes/index/users/read`,
+        `${process.env.REACT_APP_URL}:${process.env.PORT}/routes/index/users/read`,
         {
           method: "GET",
           headers: {
             "Access-Control-Allow-Origin":
-              `${process.env.REACT_APP_HOMEURL}/routes/index/users/read`,
+              `${process.env.REACT_APP_URL}:${process.env.PORT}/routes/index/users/read`,
             "Content-Type": "application/json",
           },  
         }
@@ -54,12 +54,12 @@ const Form = () => {
   const addData = async (form) => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_HOMEURL}/routes/index/users/add`,
+        `${process.env.REACT_APP_URL}:${process.env.PORT}/routes/index/users/add`,
         {
           method: "POST",
           headers: {
             "Access-Control-Allow-Origin":
-              `${process.env.REACT_APP_HOMEURL}/routes/index/users/add`,
+              `${process.env.REACT_APP_URL}:${process.env.PORT}/routes/index/users/add`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(form),
@@ -87,7 +87,7 @@ const Form = () => {
   const deleteData = async (id) => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_HOMEURL}/routes/index/users/delete/${id}`,
+        `${process.env.REACT_APP_URL}:${process.env.PORT}/routes/index/users/delete/${id}`,
         {
           method: "DELETE",
         }

@@ -22,7 +22,7 @@ mongoose.connection.once("open", () => {
 const app = express();
 
 // Serve React static files
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "development") {
   app.use(express.static(path.join(__dirname, "/build")));
 
   app.get("/", (req, res) => {
@@ -43,7 +43,7 @@ const routes = require("./routes/index.js");
 app.use("/routes/index", routes);
 
 // Listen on port 3000
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
